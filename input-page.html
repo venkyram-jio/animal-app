@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Post</title>
+  <style>
+    /* Styling for the form inputs */
+    body {
+      height: 2000px;
+      padding-top: 60px;
+      
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(124, 239, 41, 0.5);
+      padding: 5px 16px;
+      border-radius: 15px;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      left: 10px;
+      z-index: 100;
+    }
+    
+    .search-bar {
+      border-radius: 30px;
+      border: 0.5px solid gray;
+      height: 30px;
+      width: 300px;
+    }
+
+    .icon-container {
+      background-color: orange;
+      width: 45px;
+      height: 45px;
+      border-radius: 15px;
+      border:  0.5px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .view-all-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 30px 16px;
+    }
+
+    .category-text {
+      font-weight: bold;
+    }
+
+    .view-all-text {
+      color: orange;
+      font-size: 14px;
+
+    }
+
+    .animal-icons-main-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
+
+    .animal-icons-container {
+      background-color: rgba(246, 160, 1, 0.20);
+      border-radius: 15px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .animal-icons {
+      width: 35px;
+      height: 35px;
+      object-fit: cover;
+    }
+
+    
+
+    .animal-names {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .post-preview {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .post-container {
+      width: 170px;
+      border-radius: 15px;
+      padding-top: 50px;
+      padding-bottom: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+      background-color: rgba(255, 255, 255, 0.416);
+      border: none;
+      justify-content: center;
+      margin: 15px;
+      box-shadow: 3px 3px 100px rgba(0, 0, 0, 0.15);
+      
+      transition: .5s;
+      cursor: pointer;
+    }
+
+    .post-container:hover {
+      background-color: rgb(171, 193, 255);
+      transform: scale(1.2);
+    
+    }
+    .images-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .post-images {
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+      object-fit: contain;
+      display: flex;
+      margin-bottom: 5px;
+      transition: 1s;
+    }
+
+    .post-images:hover {
+      transform: scale(1.2);
+    }
+    .post-details-container {
+      width: auto;
+      color: black;
+      background-color: white;
+      border-radius: 15px;
+      padding: 5px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+      transition: 1s;
+    }
+    .post-details-container:hover {
+      transform: scale(1.2);
+    }
+
+    .post-details:nth-child(n) {
+      font-weight: bold;
+      transition: 0.5s;
+    }
+
+
+    .call-button-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .call-button {
+      background-color: rgb(36, 75, 99);
+      color: rgb(255, 255, 255);
+      border: none;
+      padding: 2px 16px;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 1s;
+    }
+
+    .call-button:hover {
+      background-color: rgb(96, 96, 96);
+      color: rgb(255, 255, 255);
+      padding: 3px 30px;
+      transform: scale(1.1);
+    }
+
+    .call-button:active {
+      background-color: rgb(255, 0, 0);
+      color: rgb(160, 255, 166);
+      padding: 3px 30px;
+    }
+
+    .gender-icon {
+      width: 30px;
+      height: 30px;
+      transition:  rotate 1s;
+    }
+
+    .gender-icon:hover {
+      transform: rotate(220deg);
+    }
+
+    .upload-container {
+      background-color: rgb(100, 100, 234);
+      height: 100px;
+      width: 300px;
+      border-radius: 15px;
+      margin: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    /* Styling for the post preview */
+    .post-preview {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .post-preview .images-container {
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      margin-right: 10px;
+      float: left;
+    }
+    .post-preview .images-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .post-preview .post-details-container {
+      overflow: hidden;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .post-preview .post-details-container:hover {
+      text-decoration: underline;
+    }
+    .post-preview .post-details-container .post-details {
+      float: left;
+    }
+    .post-preview .post-details-container .post-details div {
+      margin-bottom: 5px;
+    }
+    .post-preview .gender {
+      float: left;
+    }
+    .post-preview .call-button-container {
+      float: right;
+    }
+  </style>
+</head>
+<body>
+  <h1>Create Post</h1>
+  <form>
+    <label for="image">Post Image</label>
+    <input type="text" id="image" name="image" placeholder="Enter image URL">
+    
+    <label for="price">Price</label>
+    <input type="text" id="price" name="price" placeholder="Enter price">
+    
+    <label for="breed">Breed</label>
+    <input type="text" id="breed" name="breed" placeholder="Enter breed">
+    
+    <label for="location">Location</label>
+    <input type="text" id="location" name="location" placeholder="Enter location">
+    
+    <button type="submit" id="submit">Create Post</button>
+  </form>
+  
+  <div class="post-preview"></div>
+
+  <script>
+    const form = document.querySelector('form');
+    const imageInput = document.querySelector('#image');
+    const priceInput = document.querySelector('#price');
+    const breedInput = document.querySelector('#breed');
+    const locationInput = document.querySelector('#location');
+    const postPreviewDiv = document.querySelector('.post-preview');
+    
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const postContainer = document.createElement("div");
+      postContainer.classList.add("post-container");
+
+      const imagesContainer = document.createElement("div");
+      imagesContainer.classList.add("images-container");
+      postContainer.appendChild(imagesContainer);
+
+      const postImage = document.createElement("img");
+      postImage.classList.add("post-images");
+      postImage.src = imageInput.value;
+      imagesContainer.appendChild(postImage);
+
+      const postDetailsContainer = document.createElement("div");
+      postDetailsContainer.classList.add("post-details-container");
+      postDetailsContainer.setAttribute("onclick", "window.open('pet-details-page.html', target ='_blank')");
+      const postDetails = document.createElement("div");
+  postDetails.classList.add("post-details");
+  postDetailsContainer.appendChild(postDetails);
+
+  const postPrice = document.createElement("div");
+  postPrice.textContent = "₹ " + priceInput.value;
+  postDetails.appendChild(postPrice);
+
+  const postBreed = document.createElement("div");
+  postBreed.textContent = breedInput.value;
+  postDetails.appendChild(postBreed);
+
+  const postLocation = document.createElement("div");
+  postLocation.textContent = locationInput.value;
+  postDetails.appendChild(postLocation);
+
+  const gender = document.createElement("div");
+  gender.classList.add("gender");
+  postDetailsContainer.appendChild(gender);
+
+  const genderIcon = document.createElement("img");
+  genderIcon.classList.add("gender-icon");
+  genderIcon.src = "icons/male.png";
+  genderIcon.alt = "";
+  gender.appendChild(genderIcon);
+
+  postContainer.appendChild(postDetailsContainer);
+
+  const callButtonContainer = document.createElement("div");
+  callButtonContainer.classList.add("call-button-container");
+  postContainer.appendChild(callButtonContainer);
+
+  const callButton = document.createElement("button");
+  callButton.classList.add("call-button");
+  callButton.textContent = "Call";
+  callButtonContainer.appendChild(callButton);
+
+  postPreviewDiv.appendChild(postContainer);
+
+  // Clear form inputs
+  imageInput.value = '';
+  priceInput.value = '';
+  breedInput.value = '';
+  locationInput.value = '';
+});
+</script>
+</body>
+</html>

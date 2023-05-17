@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal app</title>
+  
+  <link rel="stylesheet" href="post.css">
+
+  <style>
+    body {
+      height: 2000px;
+      padding-top: 60px;
+      
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(124, 239, 41, 0.5);
+      padding: 5px 16px;
+      border-radius: 15px;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      left: 10px;
+      z-index: 100;
+    }
+    
+    .search-bar {
+      border-radius: 30px;
+      border: 0.5px solid gray;
+      height: 30px;
+      width: 300px;
+    }
+
+    .icon-container {
+      background-color: orange;
+      width: 45px;
+      height: 45px;
+      border-radius: 15px;
+      border:  0.5px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .view-all-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 30px 16px;
+    }
+
+    .category-text {
+      font-weight: bold;
+    }
+
+    .view-all-text {
+      color: orange;
+      font-size: 14px;
+
+    }
+
+    .animal-icons-main-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
+
+    .animal-icons-container {
+      background-color: rgba(246, 160, 1, 0.20);
+      border-radius: 15px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .animal-icons {
+      width: 35px;
+      height: 35px;
+      object-fit: cover;
+    }
+
+    
+
+    .animal-names {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .post-preview {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .post-container {
+      width: 170px;
+      border-radius: 15px;
+      padding-top: 50px;
+      padding-bottom: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+      background-color: rgba(255, 255, 255, 0.416);
+      border: none;
+      justify-content: center;
+      margin: 15px;
+      box-shadow: 3px 3px 100px rgba(0, 0, 0, 0.15);
+      
+      transition: .5s;
+      cursor: pointer;
+    }
+
+    .post-container:hover {
+      background-color: rgb(171, 193, 255);
+      transform: scale(1.2);
+    
+    }
+    .images-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .post-images {
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+      object-fit: contain;
+      display: flex;
+      margin-bottom: 5px;
+      transition: 1s;
+    }
+
+    .post-images:hover {
+      transform: scale(1.2);
+    }
+    .post-details-container {
+      width: auto;
+      color: black;
+      background-color: white;
+      border-radius: 15px;
+      padding: 5px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+      transition: 1s;
+    }
+    .post-details-container:hover {
+      transform: scale(1.2);
+    }
+
+    .post-details:nth-child(n) {
+      font-weight: bold;
+      transition: 0.5s;
+    }
+
+
+    .call-button-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .call-button {
+      background-color: rgb(36, 75, 99);
+      color: rgb(255, 255, 255);
+      border: none;
+      padding: 2px 16px;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 1s;
+    }
+
+    .call-button:hover {
+      background-color: rgb(96, 96, 96);
+      color: rgb(255, 255, 255);
+      padding: 3px 30px;
+      transform: scale(1.1);
+    }
+
+    .call-button:active {
+      background-color: rgb(255, 0, 0);
+      color: rgb(160, 255, 166);
+      padding: 3px 30px;
+    }
+
+    .gender-icon {
+      width: 30px;
+      height: 30px;
+      transition:  rotate 1s;
+    }
+
+    .gender-icon:hover {
+      transform: rotate(220deg);
+    }
+
+    .upload-container {
+      background-color: rgb(100, 100, 234);
+      height: 100px;
+      width: 300px;
+      border-radius: 15px;
+      margin: 15px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div>
+      <img class="icon" src="icons/buffalo.png" alt="">
+    </div>
+    <div>
+      <input class="search-bar" type="text">
+    </div>
+    <div class="icon-container">
+      <img class="icon" src="icons/filter.png" alt="">
+    </div>
+  </header>
+
+  <main>
+    <div class="view-all-container">
+      <div class="category-text">Categories</div>
+      <div class="view-all-text">View all ></div>
+    </div>
+
+    <div class="animal-icons-main-container" >
+
+      <div>
+        <div>
+          <img class="animal-icons" src="icons/buffalo.png" alt="">
+        </div>
+        <div class="animal-names">
+          Buffalo
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <img class="animal-icons" src="icons/cow.png" alt="">
+        </div>
+        <div class="animal-names">
+          Cow
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <img class="animal-icons" src="icons/goat.png" alt="">
+        </div>
+        <div class="animal-names">
+          Goat
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <img class="animal-icons" src="icons/happy.png" alt="">
+        </div>
+        <div class="animal-names">
+          Dog
+        </div>
+      </div>
+
+    </div>
+<!---
+1.Price
+2.breed
+3.location
+-->
+  <div class="post-preview" id="post-preview">
+    <div class="post-container">
+      <div class="images-container">
+        <img class="post-images" src="images/dog.jpg" alt="">
+      </div>
+      <div class="post-details-container">
+        <div class="post-details" >
+          <div>₹ 20,000</div>
+          <div>Breed</div>
+          <div>Kurnool</div>
+        </div>
+        <div class="gender">
+          <img class="gender-icon" src="icons/male.png" alt="">
+        </div>
+      </div>
+      <div class="call-button-container">
+        <button class="call-button">Call</button>
+      </div>
+    </div>
+
+    <div class="post-container">
+      <div class="images-container">
+        <img class="post-images" src="images/cow.png" alt="">
+      </div>
+      <div class="post-details-container">
+        <div class="post-details" >
+          <div>₹ 20,000</div>
+          <div>Breed</div>
+          <div>Loction</div>
+        </div>
+        <div class="gender">
+          <img class="gender-icon" src="icons/male.png" alt="">
+        </div>
+      </div>
+      <div class="call-button-container">
+        <button class="call-button">Call</button>
+      </div>
+    </div>
+  </div>
+  </main>
+
+  <div class="upload-container">
+    <form>
+      <input type="text" id="price" placeholder="Enter price">
+      <input type="text" id="breed" placeholder="Enter breed">
+      <input type="text" id="location" placeholder="Enter location">
+      <input type="file" id="image">
+      <button type="button" onclick="createPost()">Upload</button>
+    </form>
+  </div>
+
+  <script>
+
+function createPost() {
+  // get user inputs
+  const price = document.getElementById("price").value;
+  const breed = document.getElementById("breed").value;
+  const location = document.getElementById("location").value;
+  const image = document.getElementById("image").files[0];
+
+  // create post container
+  const postContainer = document.createElement("div");
+  postContainer.className = "post-container";
+
+  // create images container and add image 
+  const imagesContainer = document.createElement("div");
+  imagesContainer.className = "images-container";
+  const img = document.createElement("img");
+  img.className = "post-images";
+  img.src = URL.createObjectURL(image);
+  imagesContainer.appendChild(img);
+  postContainer.appendChild(imagesContainer);
+
+  // create post details container and add details
+  const postDetailsContainer = document.createElement("div");
+  postDetailsContainer.className = "post-details-container";
+  postDetailsContainer.onclick = function() {
+    window.open('pet-details-page.html', target='_blank');
+  };
+  const postDetails = document.createElement("div");
+  postDetails.className = "post-details";
+  postDetails.innerHTML = `
+    <div>₹ ${price}</div>
+    <div>${breed}</div>
+    <div>${location}</div>
+  `;
+  postDetailsContainer.appendChild(postDetails);
+  const gender = document.createElement("div");
+  gender.className = "gender";
+  const genderIcon = document.createElement("img");
+  genderIcon.className = "gender-icon";
+  genderIcon.src = "icons/male.png";
+  gender.appendChild(genderIcon);
+  postDetailsContainer.appendChild(gender);
+  postContainer.appendChild(postDetailsContainer);
+
+  // create call button container and add call button
+  const callButtonContainer = document.createElement("div");
+  callButtonContainer.className = "call-button-container";
+  const callButton = document.createElement("button");
+  callButton.className = "call-button";
+  callButton.innerText = "Call";
+  callButtonContainer.appendChild(callButton);
+  postContainer.appendChild(callButtonContainer);
+
+  // append post container to preview container
+  const postPreview = document.getElementById("post-preview");
+  postPreview.appendChild(postContainer);
+}
+
+
+  </script>
+</body>
+</html>

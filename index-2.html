@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Selling app</title>
+
+  <style>
+    .item-1 { grid-area: header;}
+    .item-2 { grid-area: main;}
+    .item-3 { grid-area: menu;}
+    .item-4 { grid-area: right;}
+    .item-5 { grid-area: footer;}
+
+    .container {
+      display: grid;
+      grid-template-areas: 
+      'header header header main main right'
+      'header header header main main right'
+      'menu  footer footer footer footer right'
+      'menu  footer footer footer footer right'
+      ;
+      background-color: rgb(4, 179, 254);
+      gap: 10px;
+      padding: 10px;
+    }
+    
+
+    .container > div {
+      background-color: rgba(244, 244, 244, 0.861);
+      padding: 20px 0px;
+      text-align: center;
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item-1">Header</div>
+    <div class="item-2">Main</div>
+    <div class="item-3">Menu</div>
+    <div class="item-4">Right</div>
+    <div class="item-5">Footer</div>
+  </div>
+</body>
+</html>
